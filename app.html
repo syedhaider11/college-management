@@ -1,0 +1,133 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard · Evergreen College</title>
+  <meta name="description" content="Evergreen College management system — frontend prototype." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/modules.css" />
+  <link rel="stylesheet" href="css/modules-extra.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <script>
+    (function () {
+      try {
+        var prefs = JSON.parse(localStorage.getItem("cms:prefs") || "{}");
+        var theme = prefs.theme || "system";
+        var dark = theme === "dark" || (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body class="app-body">
+  <a class="skip-link" href="#viewRoot">Skip to main content</a>
+
+  <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+    <div class="sidebar-brand">
+      <a class="brand-lockup" href="app.html#/dashboard" aria-label="Evergreen College dashboard">
+        <span class="brand-mark" id="brandMark" aria-hidden="true">E</span>
+        <span class="brand-name" id="brandName">Evergreen<span>College</span></span>
+      </a>
+      <button class="sidebar-close" id="sidebarClose" type="button" aria-label="Close navigation">
+        <span data-icon="close"></span>
+      </button>
+    </div>
+
+    <div class="sidebar-campus">
+      <span class="campus-dot" aria-hidden="true"></span>
+      <span>Main campus · Fall 2026</span>
+    </div>
+
+    <nav class="sidebar-nav" id="sidebarNav" aria-label="Primary navigation"></nav>
+
+    <div class="sidebar-foot">
+      <div class="sidebar-demo">
+        <span class="sidebar-demo-icon" data-icon="shield-check"></span>
+        <div>
+          <strong>Local demo workspace</strong>
+          <p>Records are stored in this browser only.</p>
+          <a href="app.html#/settings">Manage demo data</a>
+        </div>
+      </div>
+      <p class="sidebar-version">Evergreen CMS · UI prototype v1.0</p>
+    </div>
+  </aside>
+
+  <div class="nav-backdrop" id="navBackdrop" hidden></div>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false">
+          <span data-icon="menu"></span>
+        </button>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="app.html#/dashboard" id="crumbRoot">Evergreen College</a>
+          <span class="crumb-sep" aria-hidden="true">/</span>
+          <span class="crumb-current" id="crumbCurrent">Dashboard</span>
+        </nav>
+      </div>
+
+      <div class="global-search" id="globalSearchWrap">
+        <span class="search-icon" data-icon="search" aria-hidden="true"></span>
+        <input id="globalSearch" type="search" placeholder="Search students, faculty, books…" autocomplete="off" aria-label="Search campus records" aria-controls="searchResults" aria-expanded="false" />
+        <kbd class="search-kbd" aria-hidden="true">/</kbd>
+        <div class="popover search-results" id="searchResults" hidden></div>
+      </div>
+
+      <div class="topbar-actions">
+        <div class="popover-wrap">
+          <button class="icon-btn" id="notifBtn" type="button" aria-label="Notifications" aria-haspopup="true" aria-expanded="false">
+            <span data-icon="bell"></span>
+            <span class="notif-dot" id="notifDot" hidden></span>
+          </button>
+          <div class="popover notif-menu" id="notifMenu" hidden></div>
+        </div>
+
+        <div class="popover-wrap">
+          <button class="profile-btn" id="profileBtn" type="button" aria-haspopup="true" aria-expanded="false">
+            <span class="avatar avatar-sm tone-1" id="topAvatar">MC</span>
+            <span class="profile-meta">
+              <strong id="topName">Maya Chen</strong>
+              <span id="topRole">Administrator</span>
+            </span>
+            <span class="profile-chevron" data-icon="chevron-down"></span>
+          </button>
+          <div class="popover profile-menu" id="profileMenu" hidden></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="app-content" id="viewRoot" tabindex="-1"></main>
+  </div>
+
+  <div id="modalRoot"></div>
+  <div id="drawerRoot"></div>
+  <div class="toast-region" id="toastRoot" aria-live="polite" aria-atomic="false"></div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/sample-data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/students.js"></script>
+  <script src="js/teachers.js"></script>
+  <script src="js/academics.js"></script>
+  <script src="js/attendance.js"></script>
+  <script src="js/fees.js"></script>
+  <script src="js/timetable.js"></script>
+  <script src="js/results.js"></script>
+  <script src="js/library.js"></script>
+  <script src="js/announcements.js"></script>
+  <script src="js/reports.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
